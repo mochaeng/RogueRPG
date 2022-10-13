@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/icon.png-487276ed1e3a0c39cad0279d744ee560.stex"
+path="res://.import/knight_run_anim_f5.png-8d46204f5957fb712ee2f682030a393c.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://icon.png"
-dest_files=[ "res://.import/icon.png-487276ed1e3a0c39cad0279d744ee560.stex" ]
+source_file="res://tiles/v1.1 dungeon crawler 16X16 pixel pack/heroes/knight/knight_run_anim_f5.png"
+dest_files=[ "res://.import/knight_run_anim_f5.png-8d46204f5957fb712ee2f682030a393c.stex" ]
 
 [params]
 

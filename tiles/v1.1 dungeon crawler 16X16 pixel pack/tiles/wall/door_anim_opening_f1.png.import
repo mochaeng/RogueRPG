@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/icon.png-487276ed1e3a0c39cad0279d744ee560.stex"
+path="res://.import/door_anim_opening_f1.png-0b447e025dc7e40d2c466eef1761a10b.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://icon.png"
-dest_files=[ "res://.import/icon.png-487276ed1e3a0c39cad0279d744ee560.stex" ]
+source_file="res://tiles/v1.1 dungeon crawler 16X16 pixel pack/tiles/wall/door_anim_opening_f1.png"
+dest_files=[ "res://.import/door_anim_opening_f1.png-0b447e025dc7e40d2c466eef1761a10b.stex" ]
 
 [params]
 

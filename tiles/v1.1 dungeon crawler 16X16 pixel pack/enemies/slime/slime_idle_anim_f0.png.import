@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/icon.png-487276ed1e3a0c39cad0279d744ee560.stex"
+path="res://.import/slime_idle_anim_f0.png-28b5537dc330824fe69bf23b6e865567.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://icon.png"
-dest_files=[ "res://.import/icon.png-487276ed1e3a0c39cad0279d744ee560.stex" ]
+source_file="res://tiles/v1.1 dungeon crawler 16X16 pixel pack/enemies/slime/slime_idle_anim_f0.png"
+dest_files=[ "res://.import/slime_idle_anim_f0.png-28b5537dc330824fe69bf23b6e865567.stex" ]
 
 [params]
 
