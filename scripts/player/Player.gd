@@ -1,9 +1,9 @@
 extends KinematicBody2D
 class_name Player
 
-var ACCELERATION: int = 500
-var MAX_SPEED: int = 80
-var FRICTION: int = 500
+export(int) var ACCELERATION: int = 500
+export(int) var MAX_SPEED: int = 80
+export(int) var FRICTION: int = 500
 
 enum {
 	MOVE,
@@ -16,6 +16,7 @@ var current_state = MOVE
 onready var animation_player: AnimationPlayer = $AnimationPlayer
 onready var sprite: Sprite = $Sprite
 onready var sword_hitbox_collision: CollisionShape2D = $SwordHitBox/CollisionShape2D
+onready var sword_hitbox: Area2D = $SwordHitBox
 
 
 func _physics_process(delta):
@@ -29,6 +30,7 @@ func _physics_process(delta):
 			move(delta, input_vector)
 		ATTACK:
 			attack(input_vector)
+	
 
 
 func move(delta, input_vector: Vector2) -> void:
@@ -36,6 +38,7 @@ func move(delta, input_vector: Vector2) -> void:
 		_split_sprite(input_vector)
 		animation_player.play("move")
 		velocity = velocity.move_toward(input_vector * MAX_SPEED, ACCELERATION * delta)
+		sword_hitbox.knockback_vector = input_vector
 	else:
 		animation_player.play("idle")
 		velocity = velocity.move_toward(Vector2.ZERO, FRICTION * delta)
