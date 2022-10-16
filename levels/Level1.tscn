@@ -478,13 +478,13 @@ format = 1
 tile_data = PoolIntArray( -65534, 0, 4, -65530, 0, 3, -65525, 0, 4, -65520, 0, 3, -65512, 0, 65540, -65510, 0, 65540 )
 
 [node name="Camera2D" type="Camera2D" parent="."]
-position = Vector2( 79, 51 )
+position = Vector2( 129, 93 )
 current = true
 
 [node name="YSort" type="YSort" parent="."]
 
 [node name="Player" parent="YSort" instance=ExtResource( 1 )]
-position = Vector2( 79, 51 )
+position = Vector2( 129, 93 )
 script = ExtResource( 2 )
 
 [node name="RemoteTransform2D" type="RemoteTransform2D" parent="YSort/Player"]
@@ -532,7 +532,7 @@ position = Vector2( 19, 230 )
 [node name="Bats" type="YSort" parent="YSort"]
 
 [node name="Bat" parent="YSort/Bats" instance=ExtResource( 7 )]
-position = Vector2( 155, 69 )
+position = Vector2( 176, 67 )
 
 [node name="Bat5" parent="YSort/Bats" instance=ExtResource( 7 )]
 position = Vector2( 53, 57 )
@@ -549,5 +549,8 @@ position = Vector2( 321, 141 )
 [node name="Bat4" parent="YSort/Bats" instance=ExtResource( 7 )]
 position = Vector2( 375, 56 )
 
+[connection signal="area_entered" from="YSort/Player/HurtBox" to="YSort/Player" method="_on_HurtBox_area_entered"]
+
 [editable path="YSort/Player"]
 [editable path="YSort/Player/SwordHitBox"]
+[editable path="YSort/Player/HurtBox"]

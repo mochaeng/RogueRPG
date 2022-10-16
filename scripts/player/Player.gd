@@ -12,11 +12,17 @@ enum {
 
 var velocity: Vector2 = Vector2.ZERO
 var current_state = MOVE
+var player_stats = PlayerStats
 
 onready var animation_player: AnimationPlayer = $AnimationPlayer
 onready var sprite: Sprite = $Sprite
 onready var sword_hitbox_collision: CollisionShape2D = $SwordHitBox/CollisionShape2D
 onready var sword_hitbox: Area2D = $SwordHitBox
+onready var hurtbox: HurtBox = $HurtBox
+
+
+func _ready():
+	player_stats.connect("no_health", self, "queue_free")
 
 
 func _physics_process(delta):
@@ -30,7 +36,6 @@ func _physics_process(delta):
 			move(delta, input_vector)
 		ATTACK:
 			attack(input_vector)
-	
 
 
 func move(delta, input_vector: Vector2) -> void:
@@ -64,3 +69,10 @@ func _split_sprite(input_vector: Vector2):
 
 func attack_finished() -> void:
 	current_state = MOVE
+
+
+func _on_HurtBox_area_entered(area):
+	player_stats.health -= 1
+	hurtbox.start_invinvibility(0.5)
+	hurtbox.create_hit_effect()
+	

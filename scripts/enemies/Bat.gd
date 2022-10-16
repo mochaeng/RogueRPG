@@ -19,6 +19,7 @@ var velocity: Vector2 = Vector2.ZERO
 onready var stats: Node = $Stats
 onready var detection_zone: Area2D = $PlayerDetectionZone
 onready var sprite: AnimatedSprite = $Sprite
+onready var hurtbox: HurtBox = $HurtBox
 
 
 func _ready():
@@ -47,7 +48,6 @@ func _physics_process(delta):
 
 func seek_player():
 	if detection_zone.can_see_player():
-		print("ESTOU VENDO")
 		current_state = CHASE
 
 
@@ -58,6 +58,7 @@ func idle(delta):
 func _on_HurtBox_area_entered(area):
 	stats.health -= area.damage
 	knockback = area.knockback_vector * 120
+	hurtbox.create_hit_effect()
 
 
 func _on_Stats_no_health():
