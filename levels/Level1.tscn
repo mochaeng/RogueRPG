@@ -1,4 +1,4 @@
-[gd_scene load_steps=48 format=2]
+[gd_scene load_steps=50 format=2]
 
 [ext_resource path="res://scenes/player/Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://scripts/player/Player.gd" type="Script" id=2]
@@ -7,6 +7,8 @@
 [ext_resource path="res://scenes/decoration/BookShelter.tscn" type="PackedScene" id=5]
 [ext_resource path="res://scenes/decoration/TableBones.tscn" type="PackedScene" id=6]
 [ext_resource path="res://scenes/enemies/Bat.tscn" type="PackedScene" id=7]
+[ext_resource path="res://scenes/ui/HealthUI.tscn" type="PackedScene" id=8]
+[ext_resource path="res://scenes/camera/Camera2D.tscn" type="PackedScene" id=9]
 
 [sub_resource type="TileSet" id=1]
 0/name = "full_tile_level1"
@@ -477,9 +479,14 @@ collision_mask = 0
 format = 1
 tile_data = PoolIntArray( -65534, 0, 4, -65530, 0, 3, -65525, 0, 4, -65520, 0, 3, -65512, 0, 65540, -65510, 0, 65540 )
 
-[node name="Camera2D" type="Camera2D" parent="."]
+[node name="Camera2D" parent="." instance=ExtResource( 9 )]
 position = Vector2( 129, 93 )
-current = true
+
+[node name="TopLeft" parent="Camera2D/Limits" index="0"]
+position = Vector2( -8, -24 )
+
+[node name="BottomRight" parent="Camera2D/Limits" index="1"]
+position = Vector2( 433, 259 )
 
 [node name="YSort" type="YSort" parent="."]
 
@@ -534,6 +541,9 @@ position = Vector2( 19, 230 )
 [node name="Bat" parent="YSort/Bats" instance=ExtResource( 7 )]
 position = Vector2( 176, 67 )
 
+[node name="Sprite" parent="YSort/Bats/Bat" index="0"]
+frame = 1
+
 [node name="Bat5" parent="YSort/Bats" instance=ExtResource( 7 )]
 position = Vector2( 53, 57 )
 
@@ -544,13 +554,22 @@ position = Vector2( 236, 189 )
 position = Vector2( 57, 191 )
 
 [node name="Bat3" parent="YSort/Bats" instance=ExtResource( 7 )]
-position = Vector2( 321, 141 )
+position = Vector2( 312, 116 )
 
 [node name="Bat4" parent="YSort/Bats" instance=ExtResource( 7 )]
 position = Vector2( 375, 56 )
 
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="HealthUI" parent="CanvasLayer" instance=ExtResource( 8 )]
+
 [connection signal="area_entered" from="YSort/Player/HurtBox" to="YSort/Player" method="_on_HurtBox_area_entered"]
 
+[editable path="Camera2D"]
 [editable path="YSort/Player"]
 [editable path="YSort/Player/SwordHitBox"]
 [editable path="YSort/Player/HurtBox"]
+[editable path="YSort/Bats/Bat"]
+[editable path="YSort/Bats/Bat/HurtBox"]
+[editable path="YSort/Bats/Bat/PlayerDetectionZone"]
+[editable path="YSort/Bats/Bat/HitBox"]
